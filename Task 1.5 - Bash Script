@@ -1,0 +1,54 @@
+#!/bin/bash
+set -e  # Exit if any command fails
+
+# URL of your tarball (must be a direct download link)
+FILEID=13SvV4q7Sd2gp43jvljUdR_J_Bq90Za2b
+TARBALL_URL="https://drive.google.com/uc?export=download&id=${FILEID}"
+
+# Local filenames and directories
+TARBALL_NAME="Cuckoo.tar.gz"
+WORKDIR="/extracted_files"
+
+echo "Downloading tarball..."
+curl -L -o "$TARBALL_NAME" "$TARBALL_URL"
+
+echo "Extracting tarball..."
+mkdir -p "$WORKDIR"
+tar -xf "$TARBALL_NAME" -C "$WORKDIR"
+
+echo "Searching for club_records.csv..."
+CSV_FILE=$(find "$WORKDIR" -type f -name "club_records.csv" | head -n 1)
+
+if [[ -z "$CSV_FILE" ]]; then
+  echo "Error: club_records.csv not found."
+  exit 1
+fi
+
+echo "Found CSV at: $CSV_FILE"
+
+# Initialize minimum columns to a large number
+min_cols=100000
+
+echo "Calculating minimum number of columns..."
+
+while IFS= read -r line; do
+  # Count columns by splitting on comma
+  cols=$(echo "$line" | awk -F',' '{print NF}')
+  if (( cols < min_cols )); then
+    min_cols=$cols
+  fi
+done < "$CSV_FILE"
+
+echo "Minimum columns found: $min_cols"
+
+echo "Trimming all rows to $min_cols columns..."
+
+TMPFILE="${CSV_FILE}.trimmed"
+
+while IFS= read -r line; do
+  echo "$line" | cut -d',' -f1-"$min_cols"
+done < "$CSV_FILE" > "$TMPFILE"
+
+mv "$TMPFILE" "$CSV_FILE"
+
+echo "Processing complete. Trimmed CSV saved at $CSV_FILE"

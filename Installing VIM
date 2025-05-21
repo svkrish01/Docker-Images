@@ -1,0 +1,3 @@
+FROM ultramcu/ubuntu4bbb
+RUN apt update && apt install -y vim
+CMD ["/bin/bash"]

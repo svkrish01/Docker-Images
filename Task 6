@@ -1,0 +1,18 @@
+ea87 b595 c656 5409 
+d2fe c483 8180 087e /
+f0c4 c128 8b17 0c9e 
+25a5 5acb af3d 8023 
+fdc9 c886 1b03 1305 
+62fa 2e86 fd36 aa8d 
+e437 ddf5 316c 36de 
+423f 6559 4266 1331 
+3579 66a5 de00 046b 
+851d 460a 6817 1ebb /
+28ac a9ea f466 934a 
+6c6d 2f80 6a40 8692 
+adc7 cb7a ed04 ee93
+b29f b79a f6fc f36b
+
+f0c4c1288b170c9e25a55acbaf3d8023fdc9c8861b03130562fa2e86fd36aa8de437ddf5316c36de423f655942661331357966a5de00046b851d460a68171ebb
+
+curl -X POST https://a5o5alnqvhu4eleirjwu43u3hy0apxqu.lambda-url.eu-north-1.on.aws/task1 -H "Content-Type: application\json" -d '{"frame":"f0c4c1288b170c9e25a55acbaf3d8023fdc9c8861b03130562fa2e86fd36aa8de437ddf5316c36de423f655942661331357966a5de00046b851d460a68171ebb"}'

@@ -15,4 +15,4 @@ b29f b79a f6fc f36b
 
 f0c4c1288b170c9e25a55acbaf3d8023fdc9c8861b03130562fa2e86fd36aa8de437ddf5316c36de423f655942661331357966a5de00046b851d460a68171ebb
 
-curl -X POST https://a5o5alnqvhu4eleirjwu43u3hy0apxqu.lambda-url.eu-north-1.on.aws/task1 -H "Content-Type: application\json" -d '{"frame":"f0c4c1288b170c9e25a55acbaf3d8023fdc9c8861b03130562fa2e86fd36aa8de437ddf5316c36de423f655942661331357966a5de00046b851d460a68171ebb"}'
+curl -X POST https://a5o5alnqvhu4eleirjwu43u3hy0apxqu.lambda-url.eu-north-1.on.aws/task1 -H "Content-Type: application/json" -d '{"frame":"f0c4c1288b170c9e25a55acbaf3d8023fdc9c8861b03130562fa2e86fd36aa8de437ddf5316c36de423f655942661331357966a5de00046b851d460a68171ebb"}'

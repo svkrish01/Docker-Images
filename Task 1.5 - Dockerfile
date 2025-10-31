@@ -1,0 +1,10 @@
+FROM ultramcu/ubuntu4bbb
+
+RUN apt-get update && apt-get install -y apt-transport-https ca-certificates curl gnupg && \
+    rm -rf /var/lib/apt/lists/* && apt-get update && \
+    apt-get install -y curl tar
+
+COPY process_club_records.sh /usr/local/bin/process_club_records.sh
+RUN chmod +x /usr/local/bin/process_club_records.sh
+
+CMD ["/usr/local/bin/process_club_records.sh"]
